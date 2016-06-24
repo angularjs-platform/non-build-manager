@@ -1,0 +1,391 @@
+module.exports = {
+    "rules": {
+            "attribute-quotes": [
+                0,
+                {
+                    "include": true
+                }
+            ],
+            "bem-depth": [
+                0,
+                {
+                    "max-depth": 1
+                }
+            ],
+            "border-zero": [
+                2,
+                {
+                    "convention": "0"
+                }
+            ],
+            "brace-style": [
+                2,
+                {
+                    "style": "1tbs",
+                    "allow-single-line": true
+                }
+            ],
+            "class-name-format": [
+                2,
+                {
+                    "allow-leading-underscore": true,
+                    "convention": "hyphenatedlowercase",
+                    "convention-explanation": false,
+                    "ignore": []
+                }
+            ],
+            "clean-import-paths": [
+                0,
+                {
+                    "leading-underscore": false,
+                    "filename-extension": false
+                }
+            ],
+            "empty-args": [
+                0,
+                {
+                    "include": false
+                }
+            ],
+            "empty-line-between-blocks": [
+                1,
+                {
+                    "include": true,
+                    "allow-single-line-rulesets": true
+                }
+            ],
+            "extends-before-declarations": [
+                2,
+                {}
+            ],
+            "extends-before-mixins": [
+                2,
+                {}
+            ],
+            "final-newline": [
+                2,
+                {
+                    "include": true
+                }
+            ],
+            "force-attribute-nesting": [
+                0,
+                {}
+            ],
+            "force-element-nesting": [
+                0,
+                {}
+            ],
+            "force-pseudo-nesting": [
+                0,
+                {}
+            ],
+            "function-name-format": [
+                2,
+                {
+                    "allow-leading-underscore": true,
+                    "convention": "hyphenatedlowercase",
+                    "convention-explanation": false
+                }
+            ],
+            "hex-length": [
+                2,
+                {
+                    "style": "short"
+                }
+            ],
+            "hex-notation": [
+                2,
+                {
+                    "style": "lowercase"
+                }
+            ],
+            "id-name-format": [
+                2,
+                {
+                    "allow-leading-underscore": true,
+                    "convention": "hyphenatedlowercase",
+                    "convention-explanation": false,
+                    "ignore": []
+                }
+            ],
+            "indentation": [
+                1,
+                {
+                    "size": 4
+                }
+            ],
+            "leading-zero": [
+                1,
+                {
+                    "include": false
+                }
+            ],
+            "mixin-name-format": [
+                2,
+                {
+                    "allow-leading-underscore": true,
+                    "convention": "hyphenatedlowercase",
+                    "convention-explanation": false
+                }
+            ],
+            "mixins-before-declarations": [
+                2,
+                {
+                    "exclude": [
+                        "breakpoint",
+                        "mq"
+                    ]
+                }
+            ],
+            "nesting-depth": [
+                2,
+                {
+                    "max-depth": 4
+                }
+            ],
+            "no-attribute-selectors": [
+                0,
+                {}
+            ],
+            "no-color-keywords": [
+                2,
+                {}
+            ],
+            "no-color-literals": [
+                2,
+                {
+                    "allow-map-identifiers": true,
+                    "allow-rgba": false,
+                    "allow-variable-identifiers": true
+                }
+            ],
+            "no-combinators": [
+                0,
+                {}
+            ],
+            "no-css-comments": [
+                0,
+                {}
+            ],
+            "no-debug": [
+                2,
+                {}
+            ],
+            "no-disallowed-properties": [
+                0,
+                {
+                    "properties": []
+                }
+            ],
+            "no-duplicate-properties": [
+                1,
+                {
+                    "exclude": []
+                }
+            ],
+            "no-empty-rulesets": [
+                2,
+                {}
+            ],
+            "no-extends": [
+                0,
+                {}
+            ],
+            "no-ids": [
+                1,
+                {}
+            ],
+            "no-important": [
+                2,
+                {}
+            ],
+            "no-invalid-hex": [
+                2,
+                {}
+            ],
+            "no-mergeable-selectors": [
+                2,
+                {
+                    "whitelist": []
+                }
+            ],
+            "no-misspelled-properties": [
+                2,
+                {
+                    "extra-properties": []
+                }
+            ],
+            "no-qualifying-elements": [
+                0,
+                {
+                    "allow-element-with-attribute": false,
+                    "allow-element-with-class": false,
+                    "allow-element-with-id": false
+                }
+            ],
+            "no-trailing-whitespace": [
+                0,
+                {}
+            ],
+            "no-trailing-zero": [
+                2,
+                {
+                    "include": false
+                }
+            ],
+            "no-transition-all": [
+                0,
+                {}
+            ],
+            "no-universal-selectors": [
+                0,
+                {}
+            ],
+            "no-url-protocols": [
+                0,
+                {}
+            ],
+            "no-vendor-prefixes": [
+                0,
+                {
+                    "additional-identifiers": [],
+                    "excluded-identifiers": [],
+                    "ignore-non-standard": false
+                }
+            ],
+            "no-warn": [
+                2,
+                {}
+            ],
+            "one-declaration-per-line": [
+                2,
+                {}
+            ],
+            "placeholder-in-extend": [
+                0,
+                {}
+            ],
+            "placeholder-name-format": [
+                0,
+                {
+                    "allow-leading-underscore": true,
+                    "convention": "hyphenatedlowercase",
+                    "convention-explanation": false
+                }
+            ],
+            "property-sort-order": [
+                0,
+                {
+                    "order": "alphabetical",
+                    "ignore-custom-properties": false
+                }
+            ],
+            "property-units": [
+                0,
+                {
+                    "per-property": {},
+                    "global": []
+                }
+            ],
+            "pseudo-element": 0,
+            "quotes": [
+                2,
+                {
+                    "style": "single"
+                }
+            ],
+            "shorthand-values": [
+                2,
+                {
+                    "allowed-shorthands": [
+                        1,
+                        2,
+                        3
+                    ]
+                }
+            ],
+            "single-line-per-selector": [
+                2,
+                {}
+            ],
+            "space-after-bang": [
+                2,
+                {
+                    "include": false
+                }
+            ],
+            "space-after-colon": [
+                2,
+                {
+                    "include": true
+                }
+            ],
+            "space-after-comma": [
+                2,
+                {
+                    "include": true
+                }
+            ],
+            "space-around-operator": [
+                0,
+                {
+                    "include": true
+                }
+            ],
+            "space-before-bang": [
+                2,
+                {
+                    "include": true
+                }
+            ],
+            "space-before-brace": [
+                2,
+                {
+                    "include": true
+                }
+            ],
+            "space-before-colon": [
+                2,
+                {
+                    "include": false
+                }
+            ],
+            "space-between-parens": [
+                2,
+                {
+                    "include": false
+                }
+            ],
+            "trailing-semicolon": [
+                2,
+                {
+                    "include": true
+                }
+            ],
+            "url-quotes": [
+                2,
+                {}
+            ],
+            "variable-for-property": [
+                0,
+                {
+                    "properties": []
+                }
+            ],
+            "variable-name-format": [
+                2,
+                {
+                    "allow-leading-underscore": true,
+                    "convention": "hyphenatedlowercase",
+                    "convention-explanation": false
+                }
+            ],
+            "zero-unit": [
+                0,
+                {
+                    "include": false
+                }
+            ]
+        }
+}
