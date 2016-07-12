@@ -1,0 +1,9 @@
+node_modules/
+dist/
+npm-debug.log
+.idea/
+.vscode/
+coverage/
+apidocs/
+typings/
+.DS_Store

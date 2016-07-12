@@ -1,0 +1,60 @@
+{
+    "name": "@norn/non-build-manager",
+    "version": "0.1.0",
+    "description": "Build Tool, Server Mocker, Coding conventions and Changelog Generator",
+    "repository": {
+        "type": "git",
+        "url": "https://gitlab.com/norn/non-build-manager.git"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "dependencies": {
+        "gulp": "3.9.0",
+        "chalk": "1.1.1",
+        "gulp-util": "3.0.6",
+        "pretty-hrtime": "1.0.1",
+        "run-sequence": "1.2.1",
+        "lodash": "4.6.1",
+        "del": "2.0.2",
+        "typescript": "1.8.9",
+        "graceful-fs": "4.1.4",
+        
+        "webpack": "1.12.14",
+        "webpack-dev-server": "1.14.1",
+        "webpack-stream": "3.1.0",
+        "webpack-merge": "0.14.0",
+
+        "ng-annotate-loader": "0.1.0",
+        "raw-loader": "0.5.1",
+        "ts-loader": "0.8.1",
+        "css-loader": "0.23.1",
+        "sass-loader": "3.2.0",
+        "style-loader": "0.13.1",
+        "html-webpack-plugin": "2.16.0",
+        "json-loader": "0.5.4",
+        "copy-webpack-plugin": "3.0.1",
+        "extract-text-webpack-plugin": "1.0.1",
+        "image-webpack-loader": "1.8.0",
+        "file-loader": "0.9.0",
+        "url-loader": "0.5.7",
+        "istanbul-instrumenter-loader": "0.2.0",
+        
+        "tslint": "3.12.1",
+        "gulp-tslint": "5.0.0",
+        "tslint-eslint-rules": "1.3.0",
+        "gulp-sass-lint": "1.2.0",
+        
+        "sassdoc": "2.1.20",
+        "typedoc": "0.4.4",
+        "gulp-typedoc": "2.0.0",
+        
+        "express": "4.13.3",
+        "body-parser": "1.14.1"
+    },
+    "peerDependencies": {},
+    "devDependencies": {},
+    "bin": {
+        "non-build-manager": "./build/index.js"
+    }
+}
