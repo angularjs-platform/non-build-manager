@@ -33,6 +33,10 @@ module.exports = {
             {
                 test: /\.svg$/,
                 loader: 'file?name=icons/[name].[ext]'
+            },
+            {
+                test: /\.ico$/,
+                loader: 'file?name=[name].[ext]'
             }
         ]
     },
