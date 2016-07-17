@@ -185,7 +185,7 @@ module.exports = {
                 }
             ],
             "no-empty-rulesets": [
-                2,
+                1,
                 {}
             ],
             "no-extends": [

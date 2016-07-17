@@ -1,7 +1,7 @@
 module.exports = {
     "rules": {
         "align": [
-            true,
+            false,
             "parameters",
             "arguments",
             "statements"
