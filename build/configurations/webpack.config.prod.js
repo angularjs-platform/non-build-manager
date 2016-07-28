@@ -1,5 +1,5 @@
 var webpack = require('webpack');
-var webpackCommonConfig = require('./webpack.config.common');
+var webpackCommonConfig = require('./webpack.config.modularized');
 var webpackMerge = require('webpack-merge');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var utils = require('../utils');

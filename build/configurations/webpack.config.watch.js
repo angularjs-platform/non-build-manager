@@ -15,14 +15,12 @@ var mockServerPort = configs.MOCK_SERVER_PORT;
 var utils = require('../utils');
 
 var webpackWatchConfig = {
-    entry: [
-        __dirname + '/../../node_modules/webpack-dev-server/client?http://localhost:'+ webpackDevServerPort +'/',
-        __dirname + '/../../node_modules/webpack/hot/dev-server',
-        cwd + '/' + packageJSON.browser,
-    ],
+    entry: {
+        devserver: __dirname + '/../../node_modules/webpack-dev-server/client?http://localhost:'+ webpackDevServerPort +'/',
+        hmr: __dirname + '/../../node_modules/webpack/hot/dev-server'
+    },
     output: {
         path: cwd + '/' + configs.distFolder,
-        filename: utils.getPackageFileName() + '.js',
         pathinfo: true
     },
     plugins: [
