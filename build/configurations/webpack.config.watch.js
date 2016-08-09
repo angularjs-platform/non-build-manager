@@ -14,6 +14,8 @@ var mockServerPort = configs.MOCK_SERVER_PORT;
 
 var utils = require('../utils');
 
+var tslintRules = require(path.join(__dirname, '../../coding-conventions/rules/typescript'));
+
 var webpackWatchConfig = {
     entry: {
         devserver: __dirname + '/../../node_modules/webpack-dev-server/client?http://localhost:'+ webpackDevServerPort +'/',
@@ -23,9 +25,26 @@ var webpackWatchConfig = {
         path: cwd + '/' + configs.distFolder,
         pathinfo: true
     },
+    module: {
+        preLoaders: [
+            {
+                test: /\.ts$/,
+                loader: 'tslint-loader',
+                exclude: /node_modules/
+            }
+        ]
+    },
     plugins: [
         new webpack.HotModuleReplacementPlugin()
-    ]
+    ],
+    tslint: {
+        rulesDirectory: path.join(__dirname, '../../node_modules/tslint-eslint-rules/dist/rules'),
+        configuration: {
+            rules: tslintRules.rules
+        },
+        emitErrors: true,
+        failOnHint: false
+    }
 };
 
 module.exports = {
