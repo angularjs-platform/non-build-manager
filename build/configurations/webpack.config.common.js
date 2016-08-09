@@ -5,7 +5,8 @@ var utils = require('../utils');
 
 module.exports = {
     resolve: {
-        extensions: ['', '.webpack.js', '.web.js', '.ts', '.js']
+        extensions: ['', '.webpack.js', '.web.js', '.ts', '.js'],
+        modulesDirectories: [path.join(cwd, './node_modules'), './node_modules']
     },
     resolveLoader: {
         modulesDirectories: [path.join(__dirname, './../../node_modules')]
