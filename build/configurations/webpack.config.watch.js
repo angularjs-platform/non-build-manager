@@ -22,7 +22,7 @@ var webpackWatchConfig = {
         hmr: __dirname + '/../../node_modules/webpack/hot/dev-server'
     },
     output: {
-        path: cwd + '/' + configs.distFolder,
+        path: cwd + '/',
         pathinfo: true
     },
     module: {
