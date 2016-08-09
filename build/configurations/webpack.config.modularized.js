@@ -37,29 +37,36 @@ function getWebpackModuleConfig() {
 
     var webpackModuleConfig = {};
 
-    if(webpackConfig !== undefined && webpackConfig.copyAssets !== undefined) {
-        if(webpackModuleConfig.plugins === undefined) {
-            webpackModuleConfig.plugins = [];
-        }
-        webpackModuleConfig.plugins.push(new CopyWebpackPlugin(getCopyAssets(webpackConfig)));
-    }
+    if(webpackConfig !== undefined) {
 
-    if(webpackConfig !== undefined && webpackConfig.entry !== undefined) {
-        webpackModuleConfig.entry = getEntry(webpackConfig);
         if(webpackModuleConfig.plugins === undefined) {
             webpackModuleConfig.plugins = [];
         }
-        webpackModuleConfig.plugins.push(
-            new webpack.optimize.OccurenceOrderPlugin(true),
-            new webpack.optimize.CommonsChunkPlugin({ name: ['main', 'non', 'vendor'], minChunks: Infinity })
-        );
-    }
-    else {
-        // If entrypoints are not specified, fallback on the main
-        webpackModuleConfig.entry = {
-            main: packageJSON.main
-        };
-        gutil.log('Entry points not configured. Using ' + packageJSON.main);
+        // Copy assets
+        if(webpackConfig.copyAssets !== undefined) {
+            webpackModuleConfig.plugins.push(new CopyWebpackPlugin(getCopyAssets(webpackConfig)));
+        }
+
+        // Provide library alias
+        if(webpackConfig.libAlias !== undefined) {
+            webpackModuleConfig.plugins.push(new webpack.ProvidePlugin(webpackConfig.libAlias));
+        }
+
+        // Entry files
+        if(webpackConfig.entry !== undefined) {
+            webpackModuleConfig.entry = getEntry(webpackConfig);
+
+            webpackModuleConfig.plugins.push(
+                new webpack.optimize.OccurenceOrderPlugin(true),
+                new webpack.optimize.CommonsChunkPlugin({ name: ['main', 'non', 'vendor'], minChunks: Infinity })
+            );
+        }
+        else {
+            // If entrypoints are not specified, fallback on the main
+            webpackModuleConfig.entry = {
+                main: packageJSON.main
+            };
+        }
     }
 
     return webpackModuleConfig;
