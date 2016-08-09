@@ -3,6 +3,8 @@ var path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var utils = require('../utils');
 
+const cwd = process.cwd();
+
 module.exports = {
     resolve: {
         extensions: ['', '.webpack.js', '.web.js', '.ts', '.js'],
