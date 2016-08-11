@@ -4,6 +4,8 @@ var path = require('path');
 var webpackDevConfig = require('./webpack.config.dev');
 var webpackMerge = require('webpack-merge');
 
+var sassLintPlugin = require('sasslint-webpack-plugin');
+
 // Import config from the current working directory package.json
 var cwd = process.cwd();
 var packageJSON = require(path.resolve(cwd, 'package.json'));
@@ -35,7 +37,13 @@ var webpackWatchConfig = {
         ]
     },
     plugins: [
-        new webpack.HotModuleReplacementPlugin()
+        new webpack.HotModuleReplacementPlugin(),
+        new sassLintPlugin({
+            configFile: path.join(__dirname, '../../coding-conventions/rules/scss.yaml'),
+            ignorePlugins: ['extract-text-webpack-plugin', 'html-webpack-plugin'],
+            context: utils.getSourceFileFolders(null, '/src/'),
+            quiet: true
+        })
     ],
     tslint: {
         rulesDirectory: path.join(__dirname, '../../node_modules/tslint-eslint-rules/dist/rules'),

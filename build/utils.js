@@ -11,7 +11,7 @@ function getNonModules() {
     var packageDependencies = packageJSON.dependencies;
 
     _.forEach(packageDependencies, function(value, key) {
-      if(key.startsWith('non-') > -1) {
+      if(key.startsWith('@norn')) {
             linkedModules.push(key);
         }
     });
@@ -24,19 +24,23 @@ function getPackageFileName() {
     var tokens = _.split(packageJSON.name, '/');
     var filename = tokens.length > 1 ? tokens[1] : tokens[0];
 
-    return filename;	
+    return filename;
 }
 
 // Get the Source Files for Lint, Docs etc.
 function getSourceFileFolders(fileType, filePath) {
-     
+
     var fileSelector;
     if(fileType === 'scss'){
         fileSelector = filePath + '/**/*.s+(a|c)ss';
     }
+    else if(fileType === null) {
+        fileSelector = filePath;
+    }
     else {
         fileSelector = filePath + '/**/*.' + fileType;
     }
+
     var srcFileFolders = [cwd + fileSelector];
 
     // Iterate over all the linked dependencies and add it
@@ -45,7 +49,7 @@ function getSourceFileFolders(fileType, filePath) {
     linkedDependencies.forEach(function(dependency){
         srcFileFolders.push(cwd + '/node_modules/'+dependency + fileSelector);
     });
-    
+
     return srcFileFolders;
 }
 
