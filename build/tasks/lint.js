@@ -7,7 +7,7 @@ function lintTasks(gulp, packageJSON, cwd) {
 
 	// Lint TS Src Files
 	function lintTS() {
-   	 
+
      	var srcFileFolders = utils.getSourceFileFolders('ts', '/src');
         var tslintRules = require(path.join(__dirname, '../../coding-conventions/rules/typescript'));
 
@@ -27,7 +27,7 @@ function lintTasks(gulp, packageJSON, cwd) {
 
         var srcFileFolders = utils.getSourceFileFolders('ts', '/test');
      	var tslintRules = require(path.join(__dirname, '../../coding-conventions/rules/typescript'));
-        
+
         return gulp.src(srcFileFolders)
         	.pipe(tslint({
                 	rulesDirectory: path.join(__dirname, '../../node_modules/tslint-eslint-rules/dist/rules'),
@@ -41,13 +41,11 @@ function lintTasks(gulp, packageJSON, cwd) {
 
 	// Lint SCSS
 	function lintSCSS() {
-        
+
         var srcFileFolders = utils.getSourceFileFolders('scss', '/src');
-        var scsslintRules = require(path.join(__dirname, '../../coding-conventions/rules/scss'));
-        
     	return gulp.src(srcFileFolders)
             .pipe(sassLint({
-                rules: scsslintRules.rules
+                configFile: path.join(__dirname, '../../coding-conventions/rules/scss.yaml')
             }))
             .pipe(sassLint.format())
             .pipe(sassLint.failOnError())
