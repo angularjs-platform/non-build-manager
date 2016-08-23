@@ -40,6 +40,10 @@ module.exports = {
             {
                 test: /\.ico$/,
                 loader: 'file?name=[name].[ext]'
+            },
+            {
+                test: /\ui-grid.(ttf|eot|woff)$/,
+                loader: 'url-loader?limit=100000'
             }
         ]
     },
