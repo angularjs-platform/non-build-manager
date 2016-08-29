@@ -5,7 +5,8 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var utils = require('../utils');
 
 var webpackProdConfig = {
-    devtool: 'cheap-module-source-map',
+    devtool: 'source-map',
+    debug: false,
     module: {
         loaders: [
             {
@@ -26,9 +27,16 @@ var webpackProdConfig = {
     },
     plugins: [
         new webpack.optimize.UglifyJsPlugin({
+            beautify: false,
+            mangle: {
+                screw_ie8: true,
+                keep_fnames: true
+            },
             compress: {
+                screw_ie8: true,
                 warnings: false
-            }
+            },
+            comments: false
         }),
         new webpack.optimize.DedupePlugin(),
         new webpack.DefinePlugin({
