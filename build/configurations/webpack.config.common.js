@@ -15,7 +15,7 @@ module.exports = {
     },
     output: {
         filename: '[name].bundle.js',
-        sourceMapFilename: '[name].map',
+        sourceMapFilename: '[file].map',
         chunkFilename: '[id].chunk.js'
     },
     module: {
@@ -57,6 +57,26 @@ module.exports = {
             chunksSortMode: 'dependency'
         })
     ],
+    ts: {
+    	compilerOptions: {
+        	"target": "es5",
+            "module": "commonjs",
+            "emitDecoratorMetadata": true,
+            "experimentalDecorators": true,
+            "moduleResolution": "node",
+            "noEmitOnError": false,
+            "noEmitHelpers": false,
+            "noImplicitAny": true,
+            "removeComments": true,
+            "sourceMap": true,
+            "noImplicitReturns": true,
+            "noFallthroughCasesInSwitch": true,
+            "allowUnreachableCode": false,
+            "allowSyntheticDefaultImports": false,
+            "allowJs": false,
+            "noImplicitUseStrict": true
+    	}
+	},
     node: {
         global: 'window',
         crypto: 'empty',
