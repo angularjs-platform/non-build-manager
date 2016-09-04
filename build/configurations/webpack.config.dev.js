@@ -1,9 +1,17 @@
+var webpack = require('webpack');
 var webpackCommonConfig = require('./webpack.config.modularized');
 var webpackMerge = require('webpack-merge');
 
 var webpackDevConfig = {
-    devtool: 'eval',
+    devtool: '#eval-source-map',
     debug: true,
+    plugins: [
+        new webpack.DefinePlugin({
+            'process.env': {
+                'NODE_ENV': JSON.stringify('development')
+            }
+        })
+    ],
     module: {
         loaders: [
             {
