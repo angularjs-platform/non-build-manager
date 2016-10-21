@@ -1,4 +1,4 @@
-var webpackCommonConfig = require('./webpack.config.common');
+var webpackCommonConfig = require('./webpack.config.modularized');
 var webpackMerge = require('webpack-merge');
 
 var webpackDevConfig = {

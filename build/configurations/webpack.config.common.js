@@ -11,7 +11,9 @@ module.exports = {
         modulesDirectories: [path.join(__dirname, './../../node_modules')]
     },
     output: {
-        filename: utils.getPackageFileName() + '.js'
+        filename: '[name].bundle.js',
+        sourceMapFilename: '[name].map',
+        chunkFilename: '[id].chunk.js'
     },
     module: {
         loaders: [
@@ -35,15 +37,13 @@ module.exports = {
         ]
     },
     plugins: [
-        new webpack.ProgressPlugin(function handler(percentage, msg) {
-            console.log((percentage * 100) + '%', msg);
-        }),
         new HtmlWebpackPlugin({
             title: 'NoN Page',
             filename: './index.html',
             template: './src/index.html',
             inject: 'body',
-            hash: true
+            hash: true,
+            chunksSortMode: 'dependency'
         })
     ],
     node: {
