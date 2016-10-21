@@ -41,8 +41,7 @@ var webpackWatchConfig = {
         new sassLintPlugin({
             configFile: path.join(__dirname, '../../coding-conventions/rules/scss.yaml'),
             ignorePlugins: ['extract-text-webpack-plugin', 'html-webpack-plugin'],
-            context: utils.getSourceFileFolders(null, '/src/'),
-            quiet: true
+            context: utils.getSourceFileFolders(null, '/src/')
         })
     ],
     tslint: {
