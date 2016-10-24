@@ -74,7 +74,8 @@ module.exports = {
             "allowUnreachableCode": false,
             "allowSyntheticDefaultImports": false,
             "allowJs": false,
-            "noImplicitUseStrict": true
+            "noImplicitUseStrict": true,
+            "suppressImplicitAnyIndexErrors": true
     	}
 	},
     node: {
