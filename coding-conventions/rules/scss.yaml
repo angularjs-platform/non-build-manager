@@ -116,7 +116,7 @@ rules:
     - 0
     - {}
   no-ids:
-    - 1
+    - 0
     - {}
   no-important:
     - 1
