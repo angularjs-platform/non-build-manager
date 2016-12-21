@@ -11,12 +11,15 @@ var webpackDevConfig = {
                 'NODE_ENV': JSON.stringify('development')
             }
         })
-    ],
+    ]
+};
+
+var webpackDevLoadersConfig = {
     module: {
         loaders: [
             {
                 test: /\.scss$/,
-                loaders: ['style', 'css?sourceMap', 'sass-loader?sourceMap']
+                loaders: ['style', 'css', 'sass-loader?sourceMap']
             },
             {
                 test: /\.(jpe?g|png|gif)$/i,
@@ -26,5 +29,9 @@ var webpackDevConfig = {
     }
 };
 
-module.exports = webpackMerge(webpackCommonConfig, webpackDevConfig);
+
+module.exports = {
+    webpackDevConfig : webpackMerge(webpackCommonConfig, webpackMerge(webpackDevConfig, webpackDevLoadersConfig)),
+    webpackDevWithoutLoadersConfig : webpackMerge(webpackCommonConfig, webpackDevConfig)
+};
 

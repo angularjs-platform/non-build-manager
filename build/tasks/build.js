@@ -1,5 +1,5 @@
 var webpack = require('webpack-stream');
-var webpackDevConfig = require('../configurations/webpack.config.dev');
+var webpackDevConfig = require('../configurations/webpack.config.dev').webpackDevConfig;
 var webpackProdConfig = require('../configurations/webpack.config.prod');
 var webpackCoverageConfig = require('../configurations/webpack.config.coverage');
 //var webpackPublishConfig = require('../configurations/webpack.config.publish');
@@ -15,7 +15,7 @@ function buildTasks(gulp, packageJSON, cwd) {
         	.pipe(gulp.dest(configs.distFolder));
 	}
 	gulp.task('private:build:dev', buildDev);
-    
+
     // Build for Production
 	function buildProd() {
     	return gulp.src(packageJSON.browser)
@@ -23,7 +23,7 @@ function buildTasks(gulp, packageJSON, cwd) {
         	.pipe(gulp.dest(configs.distFolder));
 	}
 	gulp.task('private:build:prod', buildProd);
-    
+
     // Build for Coverage
 	function buildCoverage() {
     	return gulp.src(packageJSON.browser)
@@ -31,7 +31,7 @@ function buildTasks(gulp, packageJSON, cwd) {
         	.pipe(gulp.dest(configs.coverageFolder));
 	}
 	gulp.task('private:build:coverage', buildCoverage);
-    
+
     // Build for Publish
 	/*function buildPublish() {
     	return gulp.src(packageJSON.browser)
