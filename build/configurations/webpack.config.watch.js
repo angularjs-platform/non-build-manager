@@ -1,7 +1,7 @@
 var webpack = require('webpack');
 var path = require('path');
 
-var webpackDevConfig = require('./webpack.config.dev');
+var webpackDevConfig = require('./webpack.config.dev').webpackDevWithoutLoadersConfig;
 var webpackMerge = require('webpack-merge');
 
 var sassLintPlugin = require('sasslint-webpack-plugin');
@@ -25,7 +25,8 @@ var webpackWatchConfig = {
     },
     output: {
         path: cwd + '/',
-        pathinfo: true
+        pathinfo: true,
+        publicPath: 'http://localhost:' + webpackDevServerPort + '/'
     },
     module: {
         preLoaders: [
@@ -33,6 +34,16 @@ var webpackWatchConfig = {
                 test: /\.ts$/,
                 loader: 'tslint-loader',
                 exclude: /node_modules/
+            }
+        ],
+        loaders: [
+            {
+                test: /\.scss$/,
+                loaders: ['style', 'css?sourceMap', 'sass-loader?sourceMap']
+            },
+            {
+                test: /\.(jpe?g|png|gif)$/i,
+                loader: 'url'
             }
         ]
     },
