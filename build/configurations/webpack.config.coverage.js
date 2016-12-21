@@ -1,4 +1,4 @@
-const webpackDevConfig = require('./webpack.config.dev');
+const webpackDevConfig = require('./webpack.config.dev').webpackDevConfig;
 const webpackMerge = require('webpack-merge');
 
 const webpackCoverageConfig = {
