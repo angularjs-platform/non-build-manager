@@ -1,6 +1,9 @@
 function runMockServer(serveStaticResources, PORT, folderToServe){
     var express = require('express');
     var bodyParser = require('body-parser');
+    var multiparty = require('connect-multiparty');
+    var multipartyMiddleware = multiparty();
+
 
     var cwd = process.cwd();
     var packageJSON = require(cwd + '/package.json');
@@ -18,7 +21,7 @@ function runMockServer(serveStaticResources, PORT, folderToServe){
         console.log(folderToServe.replace('.',''));
         app.use(express.static(cwd + folderToServe.replace('.','')));
     }
-    
+
     // Create routes based on config
     const routes = getApiEndpoints();
     routes.forEach((config) => {
@@ -70,7 +73,12 @@ function runMockServer(serveStaticResources, PORT, folderToServe){
             if (route.method === 'GET') {
                 router.get(url, callback);
             } else if (route.method === 'POST') {
-                router.post(url, callback);
+                if(route.isupload) {
+                    router.post(url, multipartyMiddleware, callback);
+                }
+                else {
+                    router.post(url, callback);
+                }
             } else if (route.method === 'PUT') {
                 router.put(url, callback);
             }
