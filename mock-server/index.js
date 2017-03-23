@@ -2,14 +2,16 @@ function runMockServer(serveStaticResources, PORT, folderToServe){
     var express = require('express');
     var bodyParser = require('body-parser');
     var multiparty = require('connect-multiparty');
-    var multipartyMiddleware = multiparty();
-
+    var _ = require('lodash');
 
     var cwd = process.cwd();
     var packageJSON = require(cwd + '/package.json');
+    var mockServerConfig = packageJSON.config.non.mockServerConfig;
     var filePath = '/mock-server/endpoints';
+    var localizationFilePath = '/mock-server/localization.json';
 
     var app = express();
+    var multipartyMiddleware = multiparty();
 
     app.use(bodyParser.text({ type: 'text/plain' }));
     app.use(bodyParser.json({ type: 'application/json' }));
@@ -28,6 +30,11 @@ function runMockServer(serveStaticResources, PORT, folderToServe){
         app.use(config.mainUrl, createEndpoints(config.routes));
     });
 
+    // Setup localization route
+    if(mockServerConfig.localizationConfig) {
+        setupLocalizationValues();
+    };
+
     app.set('port', PORT);
 
     app.listen(PORT, function () {
@@ -37,7 +44,7 @@ function runMockServer(serveStaticResources, PORT, folderToServe){
     function getApiEndpoints() {
         var routes = [];
 
-        packageJSON.config.non.mockServerConfig.apimodules.forEach((module) => {
+        mockServerConfig.apimodules.forEach((module) => {
             try {
                 var apiEndpoints;
                 if (module === packageJSON.name) {
@@ -85,6 +92,41 @@ function runMockServer(serveStaticResources, PORT, folderToServe){
         });
 
         return router;
+    }
+
+    function setupLocalizationValues () {
+
+        mockServerConfig.localizationConfig.forEach((config) => {
+            app.get(config.url, function(req, res, next) {
+                res.json(getLocalizationValues(config.modules));
+            });
+        });
+    }
+
+    function getLocalizationValues (configModules) {
+        var localizationValues = {};
+
+        configModules.forEach((module) => {
+            try {
+                var values;
+                if (module === packageJSON.name) {
+                    // Module is the same where the program started
+                    values = require(cwd + localizationFilePath);
+                } else {
+                    // Module must be in the cwd/node_modules
+                    values = require(cwd + '/node_modules/' + module + localizationFilePath);
+                }
+
+                _.merge(localizationValues, values);
+            } catch (err) {
+                // Log an understandable error message and throw error to exit
+                console.error('Error while loading a localization module: ' + module
+                    + '. Please check if the module name is correctly typed and the module is installed in the current working directory node_modules and has server-emulator/localization.json file.');
+
+                throw err;
+            }
+        });
+        return localizationValues;
     }
 }
 
