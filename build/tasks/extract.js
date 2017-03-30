@@ -1,28 +1,20 @@
 var utils = require('../utils');
 var fs = require('fs');
+var path = require('path');
+var cwd = process.cwd();
 
 function extractLocalizations(gulp, packageJSON, cwd) {
 
     function extract() {
-        const nonModules = utils.getNonModules();
+        var outputFolder = path.join(cwd, 'extract');
+        if (!fs.existsSync(outputFolder)) {
+            fs.mkdirSync(outputFolder);
+        };
 
-        nonModules.forEach(function(dependency) {
-
-            const localizationFileName = cwd + '/node_modules/'+dependency + '/mock-server/localization.json';
-            const tokens = dependency.split('/');
-            const folderName = tokens.length > 1 ? tokens[1] : tokens[0];
-
-            try {
-                // Check if file exists
-                fs.statSync(localizationFileName);
-                gulp.src(localizationFileName)
-        	    .pipe(gulp.dest('./extract/' + folderName));
-            }
-            catch (e) {
-                // DO Nothing
-            }
+        packageJSON.config.non.mockServerConfig.localizationConfig.forEach((config) => {
+            var file = path.join(cwd, 'extract', 'localization'+ config.url.split('/').join('_') + '.json');
+            fs.writeFileSync(file, JSON.stringify(utils.getLocalizationValues(config.modules), null, 4));
         });
-
     }
 
     gulp.task('extract:localization', extract);
