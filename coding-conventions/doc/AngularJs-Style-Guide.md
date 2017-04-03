@@ -1,4 +1,4 @@
-# CBDC Angular Style Guide() {
+# AngularJS Style Guide() {
 
 ## Table of Contents
 
